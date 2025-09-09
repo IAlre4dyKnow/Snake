@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snake Game</title>
+    <title>hehe my game lol</title>
     <style>
         body {
-            display: flex;
+            display: flex;a
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -54,7 +53,6 @@
             position: relative;
             left: 50%;
             transform: translateX(-50%);
-
         }
         #gameOver, #paused {
             position: absolute;
@@ -167,7 +165,12 @@
             { background: "#f0f0f0", snake: "darkgreen", apple: "orange", grid: "#ccc", text: "black" },
             { background: "#444", snake: "darkred", apple: "green", grid: "#33ccff", text: "black" },
             { background: "#999", snake: "cyan", apple: "orange", grid: "#33ff", text: "black" },
-            { background: "#545", snake: "violet", apple: "darkred", grid: "#100", text: "black" }
+            { background: "#545", snake: "violet", apple: "darkred", grid: "#100", text: "black" },
+            { background: "#489", snake: "blue", apple: "pink", grid: "#389", text: "green" },
+            { background: "#693", snake: "black", apple: "black", grid: "#389", text: "black" },
+            { background: "#895", snake: "purple", apple: "blue", grid: "#893", text: "black" },
+            { background: "#000", snake: "white", apple: "white", grid: "#999", text: "white" },
+            { background: "#999", snake: "black", apple: "black", grid: "#000", text: "black" }
         ];
         let currentScheme = 0;
         function Snake() {
@@ -305,14 +308,12 @@
             gameInterval = window.setInterval(gameLoop, gameSpeed);
             applyColorScheme(currentScheme);
             updateScore();
-            // Load image if already saved
             const savedImage = localStorage.getItem('savedImage');
             if (savedImage) {
                 fullscreenImage.src = savedImage;
                 fullscreenImage.style.display = 'block';
             }
         }
-        // Key event listeners
         document.addEventListener('keydown', function(e) {
             if (e.key === 'ArrowUp' && snake.direction !== 'DOWN') {
                 snake.direction = 'UP';
@@ -343,12 +344,10 @@
                 currentScheme = (currentScheme + 1) % colorSchemes.length;
                 applyColorScheme(currentScheme);
             }
-            // Toggle image visibility with Shift key
             if (e.key === 'Shift') {
                 fullscreenImage.style.display = fullscreenImage.style.display === 'block' ? 'none' : 'block';
             }
         });
-        // Image file selection and display
         imageFile.addEventListener('change', function() {
             const file = imageFile.files[0];
             if (file) {
@@ -357,7 +356,6 @@
                     fullscreenImage.src = event.target.result;
                     fullscreenImage.style.display = 'block';
                     imageSelection.style.display = 'none';
-                    // Save image URL to localStorage
                     localStorage.setItem('savedImage', event.target.result);
                 };
                 reader.readAsDataURL(file);
